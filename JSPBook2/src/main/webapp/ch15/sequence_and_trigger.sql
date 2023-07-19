@@ -1,4 +1,7 @@
 --시퀀스
+
+drop SEQUENCE id_seq;
+
 CREATE SEQUENCE id_seq
 START WITH 1
 INCREMENT BY 1;
