@@ -32,7 +32,8 @@
 	</div>
 
 	<div class="container">
-		<form name="newMember" class="form-horizontal"  action="processAddMember.jsp" method="post" onsubmit="return checkForm()">
+		<form name="newMember" class="form-horizontal"  
+		action="processAddMember.jsp" method="post" onsubmit="return checkForm()">
 			<div class="form-group  row">
 				<label class="col-sm-2 ">아이디</label>
 				<div class="col-sm-3">
