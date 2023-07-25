@@ -82,7 +82,8 @@
 						<option value="10">10</option>
 						<option value="11">11</option>
 						<option value="12">12</option>
-					</select> <input type="text" name="birthdd" maxlength="2" placeholder="일" size="4">
+					</select> 
+					<input type="text" name="birthdd" maxlength="2" placeholder="일" size="4">
 				</div>
 			</div>
 			<div class="form-group  row ">
