@@ -12,26 +12,24 @@
 			<h1 class="display-3">상품 목록</h1>
 		</div>
 	</div>
-	<div class="container">
-		<div class="row" align="center">
-		<%@ include file="dbconn.jsp"%>
-			<%
+<div class="container">
+<div class="row m-0" align="center"><%@ include file="dbconn.jsp"%>
+<%
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
 				String sql = "select * from product";
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
-			%>
-			<div class="col-md-4">
-				<img src="./upload2/<%=rs.getString("p_fileName")%>"" style="width: 100%">
-				<h3><%=rs.getString("p_name")%></h3>
-				<p><%=rs.getString("p_description")%>
-				<p><%=rs.getString("p_UnitPrice")%>원
-				<p>
-					<a href="./product.jsp?id=<%=rs.getString("p_id")%>"
-						class="btn btn-secondary" role="button"> 상세 정보 &raquo;></a>
-			</div>
+%><div class="col-md-4">
+	<img src="./upload2/<%=rs.getString("p_fileName")%>" style="width: 100%">
+	<h3><%=rs.getString("p_name")%></h3>
+	<p><%=rs.getString("p_description")%>
+	<p><%=rs.getString("p_UnitPrice")%>원
+	<p>
+		<a href="./product.jsp?id=<%=rs.getString("p_id")%>"
+			class="btn btn-secondary" role="button"> 상세 정보 &raquo;></a>
+</div>
 			<%
 				}
 				
