@@ -16,10 +16,10 @@
 		ajax1 = new XMLHttpRequest();
 	}
 	
-	function getData()//json 요청
+	function getData(user_id)//json 요청
 	{		
-		var form_name = "form_main";
-		var user_id = document.forms[form_name].elements["txt_user_id"].value;
+// 		var form_name = "form_main";
+// 		var user_id = document.forms[form_name].elements["txt_user_id"].value;
 		
 		createAJAX(); // createXHR() 메소드 호출
 		
@@ -42,10 +42,10 @@
 				//alert("2");
 				
 				var result = ajax1.responseText;
- 				alert(result);
+//  				alert(result);
 				
  				var objRes = eval("("+result+")");
- 				alert(objRes);
+//  				alert(objRes);
 				
 				var num = objRes.datas.length;
 				var res = "<table class='table table-hover'>";
@@ -76,7 +76,7 @@
 				}
 				res += "</table>";
 				
-				alert(res);
+// 				alert(res);
 				
 				resDiv.innerHTML = res;
 				
@@ -93,17 +93,66 @@
 		var form_name = "form_main";
 		var user_id = document.forms[form_name].elements["txt_user_id"].value;
 		//alert("123");
-// 		if(user_id == "")
-// 		{			
+		if(user_id == "")
+		{			
 			
-// 			document.forms[form_name].elements["txt_user_id"].focus();
-// 			return;
-// 		}
-// 		else
-// 		{
+			document.forms[form_name].elements["txt_user_id"].focus();
+			alert("값을 입력해주세요");
+			return;
+		}
+		else
+		{
 			//alert("user_id ");
-			getData();
-// 		}		
+			getData(user_id);
+		}		
+	}
+	
+	
+	function insertData()//json 요청
+	{		
+		var form_name = "form_main";
+		var user_id = document.forms[form_name].elements["user_id"].value;
+		var user_name = document.forms[form_name].elements["user_name"].value;
+		var user_phone = document.forms[form_name].elements["user_phone"].value;
+		var user_grade = document.forms[form_name].elements["user_grade"].value;
+		
+		createAJAX(); // createXHR() 메소드 호출
+		
+// 		var url = "./testFile.jsp"; //요청 url 설정
+		var url = "./insertDB.jsp"; //요청 url 설정
+		var reqparam = "user_id="+user_id;
+		reqparam += "&user_name="+user_name;
+		reqparam += "&user_phone="+user_phone;
+		reqparam += "&user_grade="+user_grade;
+		
+		ajax1.onreadystatechange = resInsertData; // 다되면 실행할 함수 등록(호출 아님. 역호출)
+		ajax1.open("Post", url, "true"); //서버의 요청설정 -url변수에 설정된 리소스를 요청할 준비
+		ajax1.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+		ajax1.send(reqparam);
+	}
+	
+	function resInsertData()
+	{
+		if(ajax1.readyState == 4)
+		{
+			if(ajax1.status == 200)
+			{
+				//alert("2");
+				
+				var result = ajax1.responseText;
+//  				alert(result);
+				
+ 				var objRes = eval("("+result+")");
+//  				alert(objRes);
+
+				if(objRes.RESULT_OK == "failed")
+					alert("입력 실패")
+				else
+					alert("입력 성공")
+				
+				
+			}
+		}
 	}
 	
 </script>
@@ -117,10 +166,19 @@
 	        <div class="col-xs-12">-</div>
 	    </div>
 	    <div class="row">
+	    <input type="text" name='user_id' class="form-control" placeholder="아이디" aria-label="Recipient's username" aria-describedby="button-addon2" onkeyup='javascript:;'>
+	    <input type="text" name='user_name' class="form-control" placeholder="이름" aria-label="Recipient's username" aria-describedby="button-addon2" onkeyup='javascript:;'>
+	    <input type="text" name='user_phone' class="form-control" placeholder="전화번호" aria-label="Recipient's username" aria-describedby="button-addon2" onkeyup='javascript:;'>
+	    <input type="text" name='user_grade' class="form-control" placeholder="학년" aria-label="Recipient's username" aria-describedby="button-addon2" onkeyup='javascript:;'>
+	    <button class="btn btn-primary" type="button"  onClick='javascript:insertData();' >Button</button>
+	    
+	    
+	    </div>
+	    <div class="row">
 	        <div class="col-sm-3 col-md-3"></div>
 	        <div class="col-sm-6">   
 	        	<div class="input-group mb-3">
-		      		<input type="text" name='txt_user_id' class="form-control" placeholder="ID 입력바람!" aria-label="Recipient's username" aria-describedby="button-addon2" onkeyup='javascript:searchData();'>
+		      		<input type="text" name='txt_user_id' class="form-control" placeholder="ID 입력바람!" aria-label="Recipient's username" aria-describedby="button-addon2" onkeyup='javascript:;'>
 		      		<button class="btn btn-primary" type="button" id="button-addon2" onClick='javascript:searchData();' >Button</button>
 		    	</div>
 		    	
