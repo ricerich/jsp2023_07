@@ -16,10 +16,10 @@
 // 	else
 // 		user_id = request.getParameter("user_id").trim();
 		
-	String user_id = (request.getParameter("user_id") == null) ? "" : request.getParameter("user_id").trim();
-	String user_name = (request.getParameter("user_name") == null) ? "" : request.getParameter("user_name").trim();
-	String user_phone = (request.getParameter("user_phone") == null) ? "" : request.getParameter("user_phone").trim();
-	String user_grade = (request.getParameter("user_grade") == null) ? "" : request.getParameter("user_grade").trim();
+	String user_id = (request.getParameter("user_id") == null) ? "AAA1" : request.getParameter("user_id").trim();
+	String user_name = (request.getParameter("user_name") == null) ? "김개똥" : request.getParameter("user_name").trim();
+	String user_phone = (request.getParameter("user_phone") == null) ? "010-1111" : request.getParameter("user_phone").trim();
+	String user_grade = (request.getParameter("user_grade") == null) ? "2" : request.getParameter("user_grade").trim();
 	
 	QueryBean.getConnection();
 	
